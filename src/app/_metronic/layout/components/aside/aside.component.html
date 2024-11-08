@@ -1,0 +1,144 @@
+<!-- begin::Aside nav -->
+<div class="hover-scroll-overlay-y my-5 my-lg-5 w-100 ps-4 ps-lg-0 pe-4 me-1" id="kt_aside_menu_wrapper"
+  data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
+  data-kt-scroll-dependencies="#kt_header" data-kt-scroll-wrappers="#kt_aside" data-kt-scroll-offset="5px">
+
+
+
+  <!-- begin:: Transaction Aside Menu -->
+  <div class="menu menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-6 menu-rounded w-100"
+    id="#kt_aside_menu" data-kt-menu="true">
+    <!--begin::Heading-->
+    <div class="menu-item">
+      <div class="menu-content pb-2">
+        <span class="menu-section text-muted text-uppercase fs-7 fw-bolder">{{activeAsideMenue}}</span>
+      </div>
+    </div>
+    <!--end::Heading-->
+
+    <!--begin::Menu item-->
+    <div class="menu-item" *ngFor="let menue of _asideMenues">
+
+      <a *ngFor="let mDetail of menue.menueDetail" routerLink="{{mDetail.link}}"
+        class="menu-link"
+        >
+        <span class="menu-title">{{mDetail.name}}</span>
+        <!-- <span class="menu-badge">{{mDetail.tooltip}}</span> -->
+      </a>
+
+
+    </div>
+    <!--end::Menu item-->
+
+
+
+    <!--begin::Collapse-->
+    <div class="collapse" id="kt_aside_categories_more">
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Blazor Integration</span>
+          <span class="menu-badge">100</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Django Dashboard</span>
+          <span class="menu-badge">90</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Rails CRUD</span>
+          <span class="menu-badge">14</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">.NET Starter Kit</span>
+          <span class="menu-badge">30</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+    </div>
+    <!--end::Collapse-->
+
+  </div>
+  <!-- end::Menu -->
+
+  <!-- begin::Menu -->
+  <div class="menu menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-6 menu-rounded w-100"
+    id="#kt_aside_menu" data-kt-menu="true" *ngIf="this.activeAsideMenue!='Transactions'">
+    <!--begin::Heading-->
+    <div class="menu-item">
+      <div class="menu-content pb-2">
+        <span class="menu-section text-muted text-uppercase fs-7 fw-bolder">Public</span>
+      </div>
+    </div>
+    <!--end::Heading-->
+
+    <!--begin::Menu item-->
+    <div class="menu-item">
+      <a routerLink="/apps/tickets-system/main" routerLinkActive="active" class="menu-link">
+        <span class="menu-title">All Questions</span>
+        <span class="menu-badge">6,234</span>
+      </a>
+    </div>
+    <!--end::Menu item-->
+
+
+
+    <!--begin::Collapse-->
+    <div class="collapse" id="kt_aside_categories_more">
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Blazor Integration</span>
+          <span class="menu-badge">100</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Django Dashboard</span>
+          <span class="menu-badge">90</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">Rails CRUD</span>
+          <span class="menu-badge">14</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+
+      <!--begin::Menu item-->
+      <div class="menu-item">
+        <a routerLink="/apps/tickets-system/main" class="menu-link">
+          <span class="menu-title">.NET Starter Kit</span>
+          <span class="menu-badge">30</span>
+        </a>
+      </div>
+      <!--end::Menu item-->
+    </div>
+    <!--end::Collapse-->
+  </div>
+  <!-- end::Menu -->
+
+
+</div>
+<!-- end::Aside nav -->
