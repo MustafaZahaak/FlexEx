@@ -17,7 +17,7 @@ export class AsideComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = [];
 
   public _asideMenues: ReadonlyArray<AsideMenu> = asideMenues;
-  activeAsideMenue: string = 'Transactions';
+  activeAsideMenue: string = 'registration';
 
   constructor(
     private layout: LayoutService,
@@ -59,5 +59,10 @@ export class AsideComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
+  }
+
+
+  setActiveMenu(activeMenu: any) {
+    this.activeAsideMenue = activeMenu;
   }
 }

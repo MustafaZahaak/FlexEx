@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppConfig } from 'src/app/app-config';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
     email: 'admin@demo.com',
-    password: 'demo',
+    password: 'demo123',
   };
   loginForm: FormGroup;
   hasError: boolean;
   returnUrl: string;
   isLoading$: Observable<boolean>;
+  public appConfig = AppConfig;
 
   // private fields
   private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
@@ -57,16 +59,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         Validators.compose([
           Validators.required,
           Validators.email,
-          Validators.minLength(3),
-          Validators.maxLength(320), // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+          Validators.minLength(8),
+          Validators.maxLength(40),
         ]),
       ],
       password: [
         this.defaultAuth.password,
         Validators.compose([
           Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(100),
+          Validators.minLength(6),
+          Validators.maxLength(50),
         ]),
       ],
     });

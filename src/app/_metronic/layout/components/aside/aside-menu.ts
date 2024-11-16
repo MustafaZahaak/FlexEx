@@ -12,7 +12,7 @@ type AsideMenu = {
 
 const asideMenues: ReadonlyArray<AsideMenu> = [
   {
-    name: "Transactions",
+    name: "transactions",
     menueDetail: [
       {
         link: 'a2a',
@@ -31,6 +31,32 @@ const asideMenues: ReadonlyArray<AsideMenu> = [
         name:'Receive Remitence',
         icon: './assets/media/icons/duotune/general/gen025.svg',
         tooltip: 'Send Remitence'
+      },
+      
+    ]
+  },
+
+  {
+    name: "registration",
+    menueDetail: [
+      {
+        link: 'individual',
+        name: 'Individual',
+        // icon: './assets/icons/duotune/communication/com006.svg',
+        icon: './assets/media/icons/duotune/general/gen049.svg',
+        tooltip: 'Individual Registrations'
+      },
+      {
+        link: 'corporate',
+        name:"Corporate",
+        icon: './assets/media/icons/duotune/finance/fin001.svg',
+        tooltip: 'Corporate Registrations'
+      },
+      {
+        link: 'ws',
+        name:'walking customer',
+        icon: './assets/media/icons/duotune/general/gen025.svg',
+        tooltip: 'Walking Customers'
       },
       
     ]

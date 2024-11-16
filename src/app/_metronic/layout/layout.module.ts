@@ -42,6 +42,7 @@ import { FormsModule } from "@angular/forms";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { ThemeModeModule } from "../partials/layout/theme-mode-switcher/theme-mode.module";
 import { SharedModule } from "../shared/shared.module";
+import { CapitalizePipe } from "src/app/pipes/capitalize.pipe";
 
 const routes: Routes = [
   {
@@ -75,6 +76,9 @@ const routes: Routes = [
     TasksTabComponent,
     SearchComponent,
     SidebarComponent,
+
+    //Pipes
+    CapitalizePipe,
   ],
   imports: [
     CommonModule,

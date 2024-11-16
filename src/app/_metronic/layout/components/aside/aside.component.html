@@ -18,15 +18,16 @@
 
     <!--begin::Menu item-->
     <div class="menu-item" *ngFor="let menue of _asideMenues">
-
-      <a *ngFor="let mDetail of menue.menueDetail" routerLink="{{mDetail.link}}"
-        class="menu-link"
-        >
-        <span class="menu-title">{{mDetail.name}}</span>
-        <!-- <span class="menu-badge">{{mDetail.tooltip}}</span> -->
-      </a>
-
-
+      <ng-container *ngFor="let mDetail of menue.menueDetail">
+        <a routerLink="{{menue.name+'/'+ mDetail.link}}" class="menu-link" *ngIf='menue.name==activeAsideMenue'
+          (click)="setActiveMenu(menue.name)"
+          routerLinkActive="active"
+          >
+          <img class="svg-icon svg-icon-primary w-12px me-3" src="{{mDetail.icon}}" />
+          <span class="menu-title">{{ mDetail.name | capitalize:'all' }}</span>
+          <!-- <span class="menu-badge">{{mDetail.tooltip}}</span> -->
+        </a>
+      </ng-container>
     </div>
     <!--end::Menu item-->
 

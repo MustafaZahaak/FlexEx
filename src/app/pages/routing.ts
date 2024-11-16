@@ -11,6 +11,11 @@ const Routing: Routes = [
       import("../modules/transactions/trs.module").then((m) => m.TrsModule),
   },
   {
+    path: "registration",
+    loadChildren: () =>
+      import("../modules/registration/reg.module").then((m) => m.RegModule),
+  },
+  {
     path: "builder",
     loadChildren: () =>
       import("./builder/builder.module").then((m) => m.BuilderModule),

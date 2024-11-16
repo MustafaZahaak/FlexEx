@@ -166,8 +166,8 @@ export const DefaultLayoutConfig: ILayout = {
   },
   loader: {
     componentName: "loader",
-    display: false,
-    type: "default", // Set default|spinner-message|spinner-logo to hide or show page loader
+    display: true,
+    type: "spinner-message", // Set default|spinner-message|spinner-logo to hide or show page loader
   },
   scrolltop: {
     componentName: "scroll-top",
@@ -177,7 +177,7 @@ export const DefaultLayoutConfig: ILayout = {
     componentName: "header",
     display: true, // Set true|false to show or hide Header
     menu: true,
-    width: "fixed", // Set fixed|fluid to change width type
+    width: "fluid", // Set fixed|fluid to change width type
     fixed: {
       desktop: true, // Set true|false to set fixed Header for desktop mode
       tabletAndMobile: true, // Set true|false to set fixed Header for tablet and mobile modes
@@ -193,13 +193,13 @@ export const DefaultLayoutConfig: ILayout = {
   },
   content: {
     componentName: "content",
-    width: "fixed", // Set fixed|fluid to change width
+    width: "fluid", // Set fixed|fluid to change width
     layout: "default",
   },
   toolbar: {
     componentName: "toolbar",
-    display: true, // Display toolbar
-    actions: true,
+    display: false, // Display toolbar
+    actions: false,
   },
   footer: {
     componentName: "footer",
@@ -208,7 +208,7 @@ export const DefaultLayoutConfig: ILayout = {
   pageTitle: {
     componentName: "pageTitle",
     display: true,
-    breadCrumbs: true,
+    breadCrumbs: false,
     description: true,
     direction: "row",
     layout: "default",
