@@ -1,0 +1,583 @@
+
+   
+   <div class="card card-custom">
+     <!-- begin::Personal Details -->
+     <div class="card-header card-header-stretch overflow-auto">
+       <ul
+         class="
+           nav nav-stretch nav-line-tabs
+           fw-bold
+           border-transparent
+           flex-nowrap
+         "
+         role="tablist"
+       >
+         <li class="nav-item">
+           <a
+             class="nav-link cursor-pointer"
+             [ngClass]="{ active: activeTab === 'Personal Details' }"
+             (click)="setActiveTab('Personal Details')"
+             role="tab"
+           >
+             Personal Details
+           </a>
+         </li>
+         <li class="nav-item">
+           <a
+             class="nav-link cursor-pointer"
+             [ngClass]="{ active: activeTab === 'Contact Details' }"
+             (click)="setActiveTab('Contact Details')"
+             role="tab"
+           >
+           Contact Details
+           </a>
+         </li>
+         <li class="nav-item">
+           <a
+             class="nav-link cursor-pointer"
+             [ngClass]="{ active: activeTab === 'Profession Details' }"
+             (click)="setActiveTab('Profession Details')"
+             role="tab"
+           >
+             Profession Details
+           </a>
+         </li>
+
+         <li class="nav-item">
+          <a
+            class="nav-link cursor-pointer"
+            [ngClass]="{ active: activeTab === 'KYC Notes' }"
+            (click)="setActiveTab('KYC Notes')"
+            role="tab"
+          >
+          KYC Notes
+          </a>
+        </li>
+
+       </ul>
+     </div>
+     <!-- end::Personal Details -->
+
+
+     <!-- begin::Form -->
+     <form class="form" [formGroup]="form" (ngSubmit)="submitPreview()">
+       <!-- begin::Body -->
+       <div class="card-body border-0 ">
+         <div class="tab-content pt-3">
+           
+          <!-- begin::Personal Details -->
+          <div class="tab-pane" [ngClass]="{ active: activeTab === 'Personal Details' }">
+               <div class="card mb-5 mb-xl-10 border-0">
+                    <!-- <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+                         data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+                         <div class="card-title m-0">
+                              <h3 class="fw-bolder m-0">Profile Details</h3>
+                         </div>
+                    </div> -->
+                    
+               <div id="kt_account_profile_details" class="collapse show">
+                         <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Upload File</label>
+                              <div class="col-lg-8">
+                                   <div class="row">   
+                                        <div class="col-lg-6 fv-row">
+                                             <label class="col-lg-4 col-form-label fw-bold fs-6">Photo</label>
+                                             <div class="col-lg-8">
+                                                  <div class="image-input image-input-outline" data-kt-image-input="true"
+                                                       [style.background-image]="'url(./assets/media/avatars/blank.png'">
+                                                       <div class="image-input-wrapper w-125px h-125px" [style.background-image]="
+                                         'url(./assets/media/avatars/300-1.jpg'
+                                       "></div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="col-lg-6 fv-row">
+                                             <label class="col-lg-4 col-form-label fw-bold fs-6">Documents</label>
+                                             <div class="col-lg-8">
+                                                  <div class="image-input image-input-outline" data-kt-image-input="true"
+                                                       [style.background-image]="'url(./assets/media/avatars/blank.png'">
+                                                       <div class="image-input-wrapper w-125px h-125px" [style.background-image]="
+                                         'url(./assets/media/avatars/300-1.jpg'
+                                       "></div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    
+                         <div class="card-body p-9">
+                    
+                              <!-- First Name -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">First Name</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input 
+                                        type="text" 
+                                        formControlName="firstName"
+                                        placeholder="First name Here"
+                                        [ngClass]="{'border-danger is-invalid': form.get('firstName')?.invalid && (form.get('firstName')?.touched || form.get('firstName')?.dirty)}"
+                                        class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" 
+                                   />
+                                   <!-- Error Message for First Name -->
+                                        <div 
+                                        *ngIf="form.get('firstName')?.invalid && (form.get('firstName')?.touched || form.get('firstName')?.dirty)"
+                                        class="pt-2"
+                                   >
+                                        <small class="ps-6 fw-light text-danger">{{ getFieldName('firstName') }} is Required !</small>
+
+                                   </div>
+                              </div>
+                              </div>
+                    
+                              <!-- Middle Name -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Middle Name</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="middleName" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Middle name Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Last Name -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Last Name</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="lastName" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Last name Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Father Name -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Father Name</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="fatherName" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Father name Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Birth Place -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Birth Place</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="birthPlace" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Birth Place Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Date Of Birth -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Date Of Birth</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="date" formControlName="dateOfBirth" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" />
+                              </div>
+                              </div>
+                    
+                              <!-- Gender -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Gender</label>
+                              <div class="col-lg-8 fv-row">
+                                   <select class="form-select form-select-solid form-select-lg" formControlName="gender">
+                                   <option value="M">Male</option>
+                                   <option value="F">Female</option>
+                                   </select>
+                              </div>
+                              </div>
+                    
+                              <!-- Marital Status -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Marital Status</label>
+                              <div class="col-lg-8 fv-row">
+                                   <select class="form-select form-select-solid form-select-lg" formControlName="maritalStatus">
+                                   <option value="S">Single</option>
+                                   <option value="M">Married</option>
+                                   <option value="D">Divorced</option>
+                                   </select>
+                              </div>
+                              </div>
+                    
+                              <!-- Creation Date -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Creation Date</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="date" formControlName="creationDate" class="form-control form-control-lg form-control-solid" />
+                              </div>
+                              </div>
+                    
+                              <!-- Current Address -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Current Address</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="currentAddress" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Current Address Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Permanent Address -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Permanent Address</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" formControlName="permanentAddress" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Permanent Address Here" />
+                              </div>
+                              </div>
+                    
+                              <!-- Status -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Status</label>
+                              <div class="col-lg-8 fv-row">
+                                   <select class="form-select form-select-solid form-select-lg" formControlName="status">
+                                   <option value="TC">Temporary Customer</option>
+                                   <option value="PC">Permanent Customer</option>
+                                   </select>
+                              </div>
+                              </div>
+                    
+                              <!-- Type -->
+                              <div class="row mb-6">
+                              <label class="col-lg-4 col-form-label fw-bold fs-6">Type</label>
+                              <div class="col-lg-8 fv-row">
+                                   <div class="d-flex align-items-center mt-3">
+                                   <label class="form-check form-check-inline form-check-solid me-5">
+                                   <input type="radio" formControlName="type" class="form-check-input" value="Resident" />
+                                   <span class="fw-bold ps-2 fs-6">Resident</span>
+                                   </label>
+                                   <label class="form-check form-check-inline form-check-solid">
+                                   <input type="radio" formControlName="type" class="form-check-input" value="Non-Resident" />
+                                   <span class="fw-bold ps-2 fs-6">Non-Resident</span>
+                                   </label>
+                                   </div>
+                              </div>
+                              </div>
+                    
+                              <!-- Sanction Screening -->
+                              <div class="row mb-0">
+                              <label class="col-lg-4 col-form-label fw-bold fs-6">Sanction Screening</label>
+                              <div class="col-lg-8 d-flex align-items-center">
+                                   <div class="form-check form-check-solid form-switch fv-row">
+                                   <input type="checkbox" formControlName="sanctionScreening" class="form-check-input w-45px h-30px" />
+                                   <label class="form-check-label"></label>
+                                   </div>
+                              </div>
+                              </div>
+                    
+                         </div>
+                 </div>
+               </div>
+             </div>
+           <!-- end::Personal Details -->
+   
+
+           <!-- begin::Contact Details -->
+           <div class="tab-pane" [ngClass]="{ active: activeTab === 'Contact Details' }">
+               <div class="card-body p-9">
+
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label fw-bold fs-6">Contact Details Type</label>
+                         <div class="col-lg-8 fv-row">
+                              <div class="d-flex align-items-center mt-3">
+                                   <label class="form-check form-check-inline form-check-solid me-5">
+                                        <input class="form-check-input" name="communication[]" type="radio"
+                                        (click)="setActiveContactType('Passport')"
+                                        />
+                                        <span class="fw-bold ps-2 fs-6">Passport</span></label>
+
+                                        <label class="form-check form-check-inline form-check-solid">
+                                        <input class="form-check-input" name="communication[]" type="radio" 
+                                        (click)="setActiveContactType('Tazkira')"
+                                        />
+                                        <span class="fw-bold ps-2 fs-6">Tazkira</span></label>
+
+                                        <label class="form-check form-check-inline form-check-solid">
+                                        <input class="form-check-input" name="communication[]" type="radio"
+                                        (click)="setActiveContactType('Gov-ID')" />
+                                        <span class="fw-bold ps-2 fs-6">Gov-ID</span></label>
+
+                              </div>
+                         </div>
+                    </div>
+
+
+                         <!-- Passport info -->
+                         <div class="row mb-6 p-0" *ngIf="activeContactDetailsType == 'Passport'" >
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Information Of Passport</label>
+                              
+                              <div class="row col-lg-8 pl-lg-4">
+                                   <div class="col-lg-8">
+                                        <label class="col-form-label required fw-bold fs-6">Nationality</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle name Here" name="nationality" value="" />
+                                   </div>
+                              
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Passport No</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Issuer Place</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Issue Date</label>
+                                        <input type="date" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Expire Date</label>
+                                        <input type="date" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+                              </div>
+
+                              
+                         </div>
+
+                         <!-- Tazkira info -->
+                         <div class="row mb-6 p-0" *ngIf="activeContactDetailsType == 'Tazkira'" >
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Information Of Tazkira</label>
+                              
+                              <div class="row col-lg-8 pl-lg-4">
+                                   <div class="col-lg-8">
+                                        <label class="col-form-label required fw-bold fs-6">Nationality</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle name Here" name="nationality" value="Afghan" />
+                                   </div>
+                              
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Tazkira No</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+                                   <div class="col-lg-6">
+                                        <label class="col-form-label required fw-bold fs-6">Issuer Place</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                             placeholder="Middle Passport No Here" name="nationality" value="" />
+                                   </div>
+                              </div>
+
+                              
+                         </div>
+
+
+                         <!-- Gov NID info -->
+                         <div class="row mb-6" *ngIf="activeContactDetailsType=='Gov-ID'">
+                              <label class="col-lg-4 col-form-label required fw-bold fs-6">Gov ID</label>
+                              <div class="col-lg-8 fv-row">
+                                   <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Gov ID Here" name="mName" value="" />
+                              </div>
+                         </div>
+
+                    <!-- Phone -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Phone</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Phone Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Email</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="email" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                  
+                     <!-- Customer Type -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Customer Type</label>
+                         <div class="col-lg-8 fv-row">
+                              <select class="form-select form-select-solid form-select-lg" name="gender">
+                                   <option value="Salary Based">Salary Based</option>
+                                   <option value="Rent Income">Rent Income</option>
+                                   <option value="Business income">Business income</option>
+                              </select>     
+                         </div>
+                    </div>
+
+               </div>
+           </div>
+           <!-- end::Contact Details -->
+   
+
+           <!-- begin::Profession Details -->
+           <div class="tab-pane" [ngClass]="{ active: activeTab === 'Profession Details' }">
+               <div class="card-body p-9">
+                    <!-- Source Income -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Source of Income</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Source of Income Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Monthly Income -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Monthly Income</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Montthly Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Monthly Turnover -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Monthly Turnover</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Monthly Turnover Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                    <!-- TIN Number -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">TIN Number</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="TIN Number Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Tenure -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Tenure</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Tenure Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                     <!-- Current Designation -->
+                     <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Current Designation</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Current Designation Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Establishment Date -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Establishment Date</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Establishment Date (YYYY/MM/DD)" name="mName" value="" />
+                         </div>
+                    </div>
+                    
+                    <!-- Official Address -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Official Address</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Official Address" name="mName" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Previous Designation -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Previous Designation</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Previous Designation" name="mName" value="" />
+                         </div>
+                    </div>
+                  
+               </div>
+           </div>
+           <!-- end::Profession Details -->
+   
+          <!-- begin::KYN Notes -->
+          <div class="tab-pane" [ngClass]="{ active: activeTab === 'KYC Notes' }">
+               <div class="card-body p-9">
+                    <!-- Source Income -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Source of Fund</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Source of Fund" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Monthly Income -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Monthly Income</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Montthly Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Monthly Turnover -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Occupation</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Monthly Turnover Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                    <!-- TIN Number -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Risk Profile</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="TIN Number Here" name="phone" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Tenure -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Interview Remark( KYC Notes)</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Tenure Here" name="mName" value="" />
+                         </div>
+                    </div>
+
+                     <!-- Current Designation -->
+                     <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">KYC Start Date</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Date (YYYY/MM/DD)" name="mName" value="" />
+                         </div>
+                    </div>
+
+                    <!-- Establishment Date -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">KYC End Date</label>
+                         <div class="col-lg-8 fv-row">
+                              <input type="text" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Date (YYYY/MM/DD)" name="mName" value="" />
+                         </div>
+                    </div>
+                    
+                    <div class="row mb-0">
+                         <label class="col-lg-4 col-form-label fw-bold fs-6">PEP</label>
+                         <div class="col-lg-8 d-flex align-items-center">
+                              <div class="form-check form-check-solid form-switch fv-row">
+                                   <input class="form-check-input w-45px h-30px" type="checkbox"
+                                        id="allowmarketing" /><label class="form-check-label"></label>
+                              </div>
+                         </div>
+                    </div>
+                  
+               </div>
+           </div>
+           <!-- end::KYN Notes -->
+   
+        
+         </div>
+       </div>
+       <!-- end::Body -->
+   
+       <!-- begin::Footer -->
+       <div class="card-footer py-6">
+         <div class="card-footer border-0 d-flex justify-content-end py-6 px-9">
+          <button type="submit" 
+          class="btn btn-primary" 
+          (click)="submitPreview()"
+          [disabled]="(!form.valid || form.pristine )"
+          
+          >
+               <ng-container>Preview</ng-container>
+               <ng-container *ngIf="isLoading">
+                    <span clas="indicator-progress" [style.display]="'block'">
+                         Please wait...{{ " " }}
+                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+               </ng-container>
+          </button>
+          </div>
+       </div>
+   
+       <!-- end::Footer -->
+     </form>
+     <!-- end::Form -->
+   </div>
+   
