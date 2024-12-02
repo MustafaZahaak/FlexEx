@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://dev.fxdmsp.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

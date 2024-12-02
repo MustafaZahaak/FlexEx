@@ -1,0 +1,77 @@
+/* Define a custom theme using the CSS */
+.my-custom-theme {
+     --ag-accent-color: #3a7aae;
+     --ag-border-color: #62badd26;
+     --ag-border-radius: 1px;
+     --ag-cell-text-color: #171819;
+     --ag-foreground-color: #4B5675;
+     --ag-header-background-color: #ffffffa3;
+     --ag-header-font-family: Inter, Helvetica, "sans-serif";
+     --ag-header-font-size: 14px;
+     --ag-header-font-weight: 500;
+     --ag-header-text-color: #6e1111;
+     --ag-odd-row-background-color: #f1f0f0;
+     --ag-font-family: inherit;
+     --ag-font-size: 14px;
+     --ag-row-border-color: #62badd26; /* Assuming the same as --ag-border-color */
+     --ag-spacing: 8px;
+     --ag-wrapper-border-color: #62badd26; /* Assuming the same as --ag-border-color */
+     --ag-wrapper-border-radius: 1px;
+   }
+   
+   /* Specific Styles to target Grid Sections */
+   .my-custom-theme .ag-root-wrapper {
+     border: 1px solid var(--ag-wrapper-border-color);
+     border-radius: var(--ag-wrapper-border-radius);
+   }
+   
+   .my-custom-theme .ag-header {
+     background-color: var(--ag-header-background-color);
+     font-family: var(--ag-header-font-family);
+     font-size: var(--ag-header-font-size);
+     font-weight: var(--ag-header-font-weight);
+     color: var(--ag-header-text-color);
+   }
+   
+   .my-custom-theme .ag-row {
+     border: 1px solid var(--ag-border-color);
+   }
+   
+   .my-custom-theme .ag-row:nth-child(odd) {
+     background-color: var(--ag-odd-row-background-color);
+   }
+   
+   .my-custom-theme .ag-cell {
+     color: var(--ag-cell-text-color);
+     font-family: var(--ag-font-family);
+     font-size: var(--ag-font-size);
+   }
+   
+   .my-custom-theme .ag-side-bar {
+     border: 1px solid var(--ag-border-color);
+   }
+   
+   .my-custom-theme .ag-row {
+     border-bottom: 1px solid var(--ag-border-color);
+   }
+   
+   .ag-theme-balham .ag-header-cell {
+     background-color: #3a7aae; /* Replace with your color */
+     color: red; /* Optional: Adjust text color for readability */
+   }
+
+/* styles.css or component-specific stylesheet */
+.update-icon {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.update-icon img {
+  width: 100%;
+  height: 100%;
+}
+

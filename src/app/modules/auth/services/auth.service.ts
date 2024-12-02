@@ -3,11 +3,13 @@ import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
 import { map, catchError, switchMap, finalize } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
 import { AuthModel } from '../models/auth.model';
-import { AuthHTTPService } from './auth-http';
+import { AuthHTTPService } from './auth-http/auth-http.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 export type UserType = UserModel | undefined;
+export type AuthType = AuthModel | undefined;
+
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +21,23 @@ export class AuthService implements OnDestroy {
 
   // public fields
   currentUser$: Observable<UserType>;
+  currentUserToken$: Observable<AuthType>;
   isLoading$: Observable<boolean>;
+
   currentUserSubject: BehaviorSubject<UserType>;
+  currentUserTokenSubject: BehaviorSubject<AuthType>;
   isLoadingSubject: BehaviorSubject<boolean>;
 
   get currentUserValue(): UserType {
     return this.currentUserSubject.value;
+  }
+
+  get currentUserTokenValue(): AuthType {
+    return this.currentUserTokenSubject.value;
+  }
+
+  set currentUserTokenValue(user: AuthModel) {
+    this.currentUserTokenSubject.next(user);
   }
 
   set currentUserValue(user: UserType) {
@@ -37,21 +50,24 @@ export class AuthService implements OnDestroy {
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserType>(undefined);
+    this.currentUserTokenSubject = new BehaviorSubject<AuthType>(undefined);
     this.currentUser$ = this.currentUserSubject.asObservable();
     this.isLoading$ = this.isLoadingSubject.asObservable();
-    const subscr = this.getUserByToken().subscribe();
-    this.unsubscribe.push(subscr);
+    this.currentUserToken$ = this.currentUserTokenSubject.asObservable();
+    // const subscr = this.getUserByToken().subscribe();
+    // this.unsubscribe.push(subscr);
   }
 
-  // public methods
-  login(email: string, password: string): Observable<UserType> {
+
+  login(email: string, password: string): Observable<AuthType> {
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
       map((auth: AuthModel) => {
-        const result = this.setAuthFromLocalStorage(auth);
-        return result;
+        this.setAuthFromLocalStorage(auth);
+        this.currentUserTokenValue = auth;
+        return auth;
       }),
-      switchMap(() => this.getUserByToken()),
+
       catchError((err) => {
         console.error('err', err);
         return of(undefined);
@@ -69,7 +85,7 @@ export class AuthService implements OnDestroy {
 
   getUserByToken(): Observable<UserType> {
     const auth = this.getAuthFromLocalStorage();
-    if (!auth || !auth.authToken) {
+    if (!auth || !auth.data.access_token) {
       return of(undefined);
     }
 
@@ -113,14 +129,14 @@ export class AuthService implements OnDestroy {
   // private methods
   private setAuthFromLocalStorage(auth: AuthModel): boolean {
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
-    if (auth && auth.authToken) {
+    if (auth && auth.data.access_token) {
       localStorage.setItem(this.authLocalStorageToken, JSON.stringify(auth));
       return true;
     }
     return false;
   }
 
-  private getAuthFromLocalStorage(): AuthModel | undefined {
+  private getAuthFromLocalStorage(): AuthType {
     try {
       const lsValue = localStorage.getItem(this.authLocalStorageToken);
       if (!lsValue) {
@@ -133,6 +149,14 @@ export class AuthService implements OnDestroy {
       console.error(error);
       return undefined;
     }
+  }
+
+  get getAuthData(): AuthType {
+    return this.getAuthFromLocalStorage();
+  }
+
+  get getAuthToken(): string | undefined {
+    return this.getAuthFromLocalStorage()?.data.access_token;
   }
 
   ngOnDestroy() {

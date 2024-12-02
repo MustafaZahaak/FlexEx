@@ -4,6 +4,10 @@ import { IndividualComponent } from './individual/individual.component';
 import { CorporateComponent } from './corporate/corporate.component';
 import { WalkingCustomerComponent } from './walking-customer/walking-customer.component';
 import { IndividualListComponent } from './individual/list/individual-list.component';
+import { StaffAddComponent } from './staff/add/staff-add.component';
+import { StaffFormComponent } from './staff/form/staff-form.component';
+import { StaffListComponent } from './staff/list/staff-list.component';
+import { StaffUpdateComponent } from './staff/update/staff-update.component';
 
 
 const routes: Routes = [
@@ -26,6 +30,22 @@ const routes: Routes = [
                {
                     path: 'wc',
                     component: WalkingCustomerComponent,
+               },
+               {
+                    path: 'staff',
+                    component: StaffFormComponent,
+               },
+               {
+                    path: 'staff-add',
+                    component: StaffAddComponent,
+               },
+               {
+                    path: 'staff-list',
+                    component: StaffListComponent,
+               },
+               {
+                    path: 'staff-update/:sId',
+                    component: StaffUpdateComponent,
                },
                { path: '', redirectTo: 'individual', pathMatch: 'full' },
                { path: '**', redirectTo: 'individual', pathMatch: 'full' },

@@ -10,11 +10,23 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
 import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { IndividualComponent } from './individual/individual.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IndividualAddComponent } from './individual/add/individual-add.component';
+import { StaffFormComponent } from './staff/form/staff-form.component';
+import { StaffListComponent } from './staff/list/staff-list.component';
+import { StaffAddComponent } from './staff/add/staff-add.component';
+import { StaffUpdateComponent } from './staff/update/staff-update.component';
+import { ConfirmationModalComponent } from '../shared/component/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
     IndividualListComponent,
-    IndividualComponent
+    IndividualComponent,
+    IndividualAddComponent,
+    StaffFormComponent,
+    StaffListComponent,
+    StaffAddComponent,
+    StaffUpdateComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     FormsModule,
     NgbTooltipModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+  ],
+  exports: [
+    
   ]
 })
 export class RegModule { }

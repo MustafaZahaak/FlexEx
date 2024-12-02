@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
 // #fake-end#
+import { ToastrModule } from 'ngx-toastr';
+
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -30,6 +32,7 @@ function appInitializer(authService: AuthService) {
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
+    ToastrModule.forRoot(),
     HttpClientModule,
     ClipboardModule,
     // #fake-start#

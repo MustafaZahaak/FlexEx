@@ -10,3 +10,11 @@
 @import "./assets/plugins/keenicons/duotone/style.css";
 @import "./assets/plugins/keenicons/outline/style.css";
 @import "./assets/plugins/keenicons/solid/style.css";
+
+// Import AG Grid core styles
+// @import "~ag-grid-community/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/styles/ag-theme-balham.css";
+
+// Import a specific theme for AG Grid
+// @import "~ag-grid-community/styles/ag-theme-balham.css";

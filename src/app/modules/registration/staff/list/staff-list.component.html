@@ -1,0 +1,12 @@
+<app-tables-widget12
+     class="card mb-5 mb-xl-8" 
+     [tableName]="tableName"
+     [fromName]="fromName"
+     [columnDefs]="columnDefs" 
+     [rowDataObservable]="staffData$"
+     [defaultColDef]="staffDefaultColDef"
+     [addLink]="addLink"
+     [updateLink]="updateLink"
+     (deleteStaff)="deleteStaff($event)"
+> 
+</app-tables-widget12>

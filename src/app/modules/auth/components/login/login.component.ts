@@ -6,6 +6,7 @@ import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConfig } from 'src/app/app-config';
+import { AuthModel } from '../../models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,8 @@ import { AppConfig } from 'src/app/app-config';
 export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'admin@demo.com',
-    password: 'demo123',
+    email: 'admin@hg.com',
+    password: 'Hewad@5657',
   };
   loginForm: FormGroup;
   hasError: boolean;
@@ -79,9 +80,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     const loginSubscr = this.authService
       .login(this.f.email.value, this.f.password.value)
       .pipe(first())
-      .subscribe((user: UserModel | undefined) => {
+      .subscribe((user: UserModel | AuthModel | undefined) => {
         if (user) {
-          this.router.navigate([this.returnUrl]);
+          console.log(" loingined",user);
+          this.router.navigate(['registration/individual-list']);
         } else {
           this.hasError = true;
         }
