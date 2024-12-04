@@ -1,0 +1,12 @@
+<app-tables-widget12
+     class="card mb-5 mb-xl-8" 
+     [tableName]="tableName"
+     [fromName]="fromName"
+     [columnDefs]="columnDefs" 
+     [rowDataObservable]="bankData$"
+     [defaultColDef]="bankDefaultColDef"
+     [addLink]="addLink"
+     [updateLink]="updateLink"
+     (deleteStaff)="deleteBank($event)"
+> 
+</app-tables-widget12>

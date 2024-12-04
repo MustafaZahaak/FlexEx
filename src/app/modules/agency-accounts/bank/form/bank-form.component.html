@@ -1,0 +1,153 @@
+<div class="card card-custom">
+     <!-- begin::Form -->
+     <form class="form" [formGroup]="form">
+          <!-- begin::Staff Details -->
+          <div class="card mb-5 mb-xl-0 border-0">    
+               <div class="card-body p-10 m-10">
+                    <!-- Name -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label required fw-bold fs-6">Name</label>
+                         <div class="col-lg-8 fv-row">
+                              <input
+                              type="text"
+                              formControlName="name"
+                              placeholder="Bank Name Here"
+                              [ngClass]="{'border-danger is-invalid': form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)}"
+                              class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                              />
+                              <!-- Error Message for Name -->
+                              <div
+                                   *ngIf="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)"
+                                   class="pt-2"
+                                   >
+                                   <small class="ps-6 fw-light text-danger">{{ getFieldName('name') }} is Required!</small>
+                              </div>
+                         </div>
+                    </div>
+     
+                    <!-- Phones -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label fw-bold fs-6">Phones</label>
+                         <div class="col-lg-8 fv-row">
+                         <input
+                         type="text"
+                         formControlName="phones"
+                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                         placeholder='e.g. 07XXXXXXXX-020XXXXXXX'
+                         />
+                         </div>
+                    </div>
+     
+                    <!-- Address -->
+                    <div class="row mb-6">
+                         <label class="col-lg-4 col-form-label fw-bold fs-6">Remarks</label>
+                         <div class="col-lg-8 fv-row">
+                         <input
+                         type="text"
+                         formControlName="address"
+                         class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                         placeholder="Remarks Here"
+                         />
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <!-- end::Staff Details -->
+
+       <!-- begin::Footer -->
+       <div class="card-footer py-6">
+         <div class="card-footer border-0 d-flex justify-content-end py-6 px-9">
+
+          <button
+          type="button"
+          class="btn btn-primary"
+          (click)="openPreviewModal()"
+          >
+               Preview
+          </button>
+         </div>
+       </div>
+       <!-- end::Footer -->
+     </form>
+     <!-- end::Form -->
+
+     <!-- Preview Modal - Using Metronic 8 Styles -->
+     <div *ngIf="showPreview" class="modal fade show d-block" id="kt_modal_preview" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="height: 600px;">
+          <div class="modal-header bg bg-gray-200">
+               <h5 class="modal-title w-100 text-center">Preview {{formName}} Data</h5>
+               <button type="button" class="btn btn-sm btn-icon btn-light" (click)="closePreviewModal()">
+               <span class="svg-icon svg-icon-2x">
+                    <!-- begin::Svg Icon | path: icons/duotune/arrows/arr061.svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path opacity="0.5" d="M6.70711 4.29289C6.31658 3.90237 5.68342 3.90237 5.29289 4.29289C4.90237 4.68342 4.90237 5.31658 5.29289 5.70711L10.5858 11L5.29289 16.2929C4.90237 16.6834 4.90237 17.3166 5.29289 17.7071C5.68342 18.0976 6.31658 18.0976 6.70711 17.7071L12 12.4142L17.2929 17.7071C17.6834 18.0976 18.3166 18.0976 18.7071 17.7071C19.0976 17.3166 19.0976 16.6834 18.7071 16.2929L13.4142 11L18.7071 5.70711C19.0976 5.31658 19.0976 4.68342 18.7071 4.29289C18.3166 3.90237 17.6834 3.90237 17.2929 4.29289L12 9.58579L6.70711 4.29289Z" fill="black"/>
+                    </svg>
+                    <!-- end::Svg Icon -->
+               </span>
+               </button>
+          </div>
+          <div class="modal-body">
+               <div class="row">
+               <div class="col-lg-12">
+                    <div class="form-group mb-1">
+                    <div style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-bordered">
+                         <tbody>
+                         <tr>
+                              <th>Name</th>
+                              <td>{{ form.value.name }}</td>
+                         </tr>
+                         <tr>
+                              <th>Phones</th>
+                              <td>{{ form.value.phones }}</td>
+                         </tr>
+                         <tr>
+                              <th>Remarks</th>
+                              <td>{{ form.value.address }}</td>
+                         </tr>
+                         </tbody>
+                    </table>
+                    </div>
+                    </div>
+               </div>
+               </div>
+          </div>
+          <div class="modal-footer m-1 p-3">
+               <button type="button" class="btn btn-secondary" (click)="closePreviewModal()">Cancel</button>
+               <button type="submit" class="btn btn-primary" (click)="confirmAndSubmit()">
+               <ng-container *ngIf="!submitStatus">Confirm & Submit</ng-container>
+               <ng-container *ngIf="submitStatus">
+                    <span class="indicator-progress" [style.display]="'block'">
+                    Please wait...{{ " " }}
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+               </ng-container>
+               </button>
+          </div>
+          </div>
+          </div>
+     </div>
+     
+     
+   
+
+     <ngx-spinner
+          bdColor="rgba(51,51,51,0.8)"
+          size="medium"
+          color="#fff"
+          type="ball-scale-multiple"
+     >
+          <p style="font-size: 20px; color: white">
+               {{spinnerText}}
+          </p>
+     </ngx-spinner>
+  
+</div>
+
+ 
+
+
+
+     
+   

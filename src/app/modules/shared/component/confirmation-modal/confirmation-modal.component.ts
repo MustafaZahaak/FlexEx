@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-confirmation-modal',
-  standalone: false,
+  // standalone: true,
   templateUrl: './confirmation-modal.component.html',
+  // imports:[FormsModule]
 })
 export class ConfirmationModalComponent {
   @Output() confirmation: EventEmitter<any> = new EventEmitter<string>();

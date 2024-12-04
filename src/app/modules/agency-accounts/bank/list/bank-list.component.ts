@@ -2,42 +2,33 @@ import { Component, Input, Output } from '@angular/core';
 import { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from 'src/app/modules/core';
-import { regRoutes } from '../../reg.route.model';
+import { agencyAccountsRoutes } from '../../ag-accounts.route.model';
 import { PaginationService } from 'src/app/modules/core/services/pagination.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from 'src/app/modules/shared/component/confirmation-modal/confirmation-modal.component';
 
 @Component({
-  selector: 'app-staff-list',
-  templateUrl: './staff-list.component.html',
-  styleUrl: './staff-list.component.scss',
-  // standalone: false,
-  // imports: []
+  selector: 'app-bank-list',
+  templateUrl: './bank-list.component.html',
+  styleUrl: './bank-list.component.scss'
 })
-export class StaffListComponent {
+export class BankListComponent {
 
   protected modalRef: any;
-  public tableName: any = 'Staff List';
-  public fromName: any = 'Staff';
-  public addLink: any = '/registration/staff-add';
-  public updateLink: any = '/registration/staff-update/';
-  public staffData$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  @Input() staffDeleteObservable: Observable<any[]>;
+  public tableName: any = 'Bank List';
+  public fromName: any = 'Bank';
+  public addLink: any = '/agency-accounts/bank-add';
+  public updateLink: any = '/agency-accounts/bank-update/';
+  public bankData$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  @Input() bankDeleteObservable: Observable<any[]>;
 
 
   columnDefs: ColDef[] = [
     { headerName: 'No', field: 'id', sortable: true, filter: true, width: 100 },
     { headerName: 'Register Number', field: 'id', sortable: true, filter: true, width: 150 },
-    { headerName: 'Name', field: 'name', sortable: true, filter: true, cellClass: 'text-success', width: 150 },
-    { headerName: 'Father Name', field: 'father_name', sortable: true, filter: true, width: 150 },
-    // { headerName: 'Phones', field: 'pretty_phone', sortable: true, filter: true, width: 200, cellClass: 'text-dark' },
-    // { headerName: 'Address', field: 'address', sortable: true, filter: true, width: 200 },
-    // { headerName: 'Tazkira No', field: 'tazkira_no', sortable: true, filter: true, width: 150 },
-    // { headerName: 'Date of Birth', field: 'date_of_birth', sortable: true, filter: 'agDateColumnFilter', width: 150 },
-    // { headerName: 'Position', field: 'position', sortable: true, filter: 'agDateColumnFilter', width: 150 },
-    // { headerName: 'Salary', field: 'salary', sortable: true, filter: true, width: 100 },
-    // { headerName: 'Hire Date', field: 'hire_date', sortable: true, filter: 'agDateColumnFilter', width: 150 },
-    // { headerName: 'Fire Date', field: 'fire_date', sortable: true, filter: 'agDateColumnFilter', width: 150 },
+    { headerName: 'Name', field: 'name', sortable: true, filter: true, cellClass: 'text-primary', width: 150 },
+    { headerName: 'Phone', field: 'phones', sortable: true, filter: true, width: 150 },
+    
     {
       headerName: 'Actions',
       field: 'actions',
@@ -67,7 +58,7 @@ export class StaffListComponent {
     }
   ];
 
-  public staffDefaultColDef: ColDef =
+  public bankDefaultColDef: ColDef =
     {
       minWidth: 160,
       resizable: true,
@@ -85,7 +76,7 @@ export class StaffListComponent {
     }
 
   ngOnInit() {
-    this.fetchStaff();
+    this.fetchBank();
   }
 
   constructor(
@@ -107,12 +98,12 @@ export class StaffListComponent {
     this.gridApi.setQuickFilter(event.target.value);
   }
 
-  fetchStaff() {
-    this._apiService.get(regRoutes.listStaff(this._pgService.getDefaultPagination()))
+  fetchBank() {
+    this._apiService.get(agencyAccountsRoutes.listBank(this._pgService.getDefaultPagination()))
       .subscribe({
         next: (response: any) => {
           if (response) {
-            this.staffData$.next(response.data);
+            this.bankData$.next(response.data);
           }
         },
         error: (failed: any) => {
@@ -121,7 +112,7 @@ export class StaffListComponent {
       });
   }
 
-  deleteStaff(sId: any) {
+  deleteBank(sId: any) {
 
     this.modalRef = this.modalService.open(ConfirmationModalComponent, { size: 'lg', centered: true });
     this.modalRef.componentInstance.confirmation.subscribe((res: any) => {
@@ -131,7 +122,7 @@ export class StaffListComponent {
   }
 
   doDelete(sId: number) {
-    this._apiService.delete(regRoutes.deleteStaff(sId))
+    this._apiService.delete(agencyAccountsRoutes.deleteBank(sId))
       .subscribe({
         next: (response: any) => {
           alert("deleted");

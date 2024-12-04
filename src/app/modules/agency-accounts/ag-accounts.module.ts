@@ -1,32 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RegRoutingModule } from './reg-routing.module';
+import { AgencyAccountsRoutingModule } from './ag-accounts.rotue';
 import { DropdownMenusModule, WidgetsModule } from '../../_metronic/partials';
 import { SharedModule } from "../../_metronic/shared/shared.module";
 import { FormsModule } from '@angular/forms';
-import { IndividualListComponent } from './individual/list/individual-list.component';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { IndividualComponent } from './individual/individual.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IndividualAddComponent } from './individual/add/individual-add.component';
-import { StaffFormComponent } from './staff/form/staff-form.component';
-import { StaffListComponent } from './staff/list/staff-list.component';
-import { StaffAddComponent } from './staff/add/staff-add.component';
-import { StaffUpdateComponent } from './staff/update/staff-update.component';
 import { ConfirmationModalComponent } from '../shared/component/confirmation-modal/confirmation-modal.component';
+import { BankListComponent } from './bank/list/bank-list.component';
+import { BankComponent } from './bank/form/bank.component';
+import { BankAddComponent } from './bank/add/bank-add.component';
+import { BankUpdateComponent } from './bank/update/bank-update.component';
 
 @NgModule({
   declarations: [
-    IndividualListComponent,
-    IndividualComponent,
-    IndividualAddComponent,
-    StaffFormComponent,
-    StaffAddComponent,
-    StaffUpdateComponent,
-    StaffListComponent,
-    ConfirmationModalComponent,
+    BankComponent,
+    BankAddComponent,
+    BankListComponent,
+    BankUpdateComponent
+    
   ],
   imports: [
     CommonModule,
@@ -34,14 +28,15 @@ import { ConfirmationModalComponent } from '../shared/component/confirmation-mod
     NgbDropdownModule,
     DropdownMenusModule,
     WidgetsModule,
-    RegRoutingModule,
+    AgencyAccountsRoutingModule,
     SharedModule,
     FormsModule,
     NgbTooltipModule,
     ReactiveFormsModule,
+    // ConfirmationModalComponent,
   ],
   exports: [
     
   ]
 })
-export class RegModule { }
+export class AgencyAccountsModule { }

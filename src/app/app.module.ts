@@ -19,10 +19,10 @@ import { ToastrModule } from 'ngx-toastr';
 
 function appInitializer(authService: AuthService) {
   return () => {
-    return new Promise((resolve) => {
-      //@ts-ignore
-      authService.getUserByToken().subscribe().add(resolve);
-    });
+    // return new Promise((resolve) => {
+    //   //@ts-ignore
+    //   authService.getUserByToken().subscribe().add(resolve);
+    // });
   };
 }
 
